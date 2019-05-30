@@ -4,7 +4,7 @@ void print_ary(int ary[], int n);
 
 int main()
 {
-  int ary[6] = {4, 6, 5, 1, 3, 2};
+  int ary[6] = {4, 2, 3, 1, 6, 5};
 
   int n = 6;
 
@@ -43,6 +43,13 @@ void insertion_sort(int *ary, int n)
     value = ary[i];
     j = i - 1;
 
+    printf("第%d次循环, ", i);
+    printf("待排序元素[%d], 已排序的元素j的范围: 0~%d,", value, j);
+    printf("已排序元素: ");
+    for (int i = 0; i <= j; i++)
+      printf("%d ", ary[i]);
+    printf("\n");
+
     // 查找插入的位置，并移动数据
     for (; j >= 0; j--)
     {
@@ -59,6 +66,12 @@ void insertion_sort(int *ary, int n)
       {
         // 注意:这里执行 j--
         ary[j + 1] = ary[j];
+
+        // 打印移动过程
+        printf("\t当前j的值为:%d, ", j);
+        printf("正在移动已排序元素%d, ", ary[j]);
+        printf("移动后数组为: ");
+        print_ary(ary, n);
       }
       else
         // 注意:这里不执行 j--
@@ -73,6 +86,12 @@ void insertion_sort(int *ary, int n)
     // ary[j + 1] = value,j + 1为空出来的位置，之所以有空位是因为元素向后移动，占用了
     // 要插入元素的位置，要插入的元素保存在value中
     ary[j + 1] = value;
+
+    // 打印插入元素后的数组
+    printf("\t当前j的值为:%d, ", j);
+    printf("插入元素[%d]后的新数组: ", value);
+    print_ary(ary, n);
+    printf("\n");
   }
 }
 
