@@ -33,10 +33,13 @@ int main()
 // 插入位置在它后面，即a[0],a[-1+1]
 // a[-1], a[0], a[1], a[2]....a[5]
 
+// 时间复杂度: T(n) = O(n ** 2)
+// 移动数据的次数会大于数组元素本身个数
+
 void insertion_sort(int *ary, int n)
 {
 
-  int value, j;
+  int value, j, count;
   for (int i = 1; i < n; i++)
   {
     // 要插入的元素的值暂存在value中
@@ -67,6 +70,9 @@ void insertion_sort(int *ary, int n)
         // 注意:这里执行 j--
         ary[j + 1] = ary[j];
 
+        // 记录移动数据次数
+        count++;
+
         // 打印移动过程
         printf("\t当前j的值为:%d, ", j);
         printf("正在移动已排序元素%d, ", ary[j]);
@@ -93,6 +99,7 @@ void insertion_sort(int *ary, int n)
     print_ary(ary, n);
     printf("\n");
   }
+  printf("总共移动%d次数据\n", count);
 }
 
 // 打印数组
